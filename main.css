@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body,
+main {
+  font-family: Inter, sans-serif;
+  width: 100%;
+  overflow: hidden;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.hero {
+  height: 100svh;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100svh;
+  color: white;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  place-content: center;
+  padding-inline: 10%;
+}
+.hidden {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.overlay .title {
+  text-transform: uppercase;
+  font-size: 2.75rem;
+  letter-spacing: 5px;
+  font-weight: 700;
+  transition-property: opacity, transform;
+  transition-duration: 2.5s;
+  transition-timing-function: ease-out;
+}
+.overlay span {
+  font-size: 4.25rem;
+  letter-spacing: 10px;
+  background: linear-gradient(
+    to bottom,
+    hsl(45, 100%, 50%),
+    hsl(40, 92%, 28%),
+    hsl(45, 100%, 50%),
+    hsl(40, 92%, 28%),
+    hsl(50, 95%, 63%),
+    hsl(40, 92%, 28%)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.overlay .content {
+  margin-top: 1.5rem;
+  line-height: 1.85rem;
+  font-size: 1.75rem;
+  font-weight: 100;
+
+  transition-property: opacity, transform;
+  transition-duration: 2.5s;
+  transition-timing-function: ease-out;
+  transition-delay: 300ms;
+}
+
+.soon {
+  margin-top: 1.75rem;
+  transition-property: opacity, transform;
+  transition-duration: 2.5s;
+  transition-timing-function: ease-out;
+  transition-delay: 700ms;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0px);
+}
+@media (min-width: 50rem) {
+  .overlay .title {
+    font-size: 4rem;
+  }
+}
+
+/* sliding animation */
+
+.tag-list {
+  margin: 0;
+  padding-inline: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  user-select: none;
+  transition: ease 75ms;
+}
+.scroller[data-animated='true'] {
+  overflow: hidden;
+  min-width: 100%;
+}
+.scroller[data-animated='true'] .scroller__inner {
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duration, 50s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller__inner {
+  position: relative;
+  width: max-content;
+  display: flex;
+  flex-wrap: wrap;
+}
+.scroller[data-direction='right'] {
+  --_animation-direction: reverse;
+}
+.scroller[data-direction='left'] {
+  --_animation-direction: forwards;
+}
+.scroller[data-speed='extra-slow'] {
+  --_animation-duration: 120s;
+}
+.scroller[data-speed='slow'] {
+  --_animation-duration: 60s;
+}
+.scroller[data-speed='fast'] {
+  --_animation-duration: 10s;
+}
+.scroller[data-speed='extra-fast'] {
+  --_animation-duration: 5s;
+}
+.scroller {
+  position: absolute;
+  width: 100%;
+}
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
